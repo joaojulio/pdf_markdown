@@ -1,0 +1,9 @@
+# Arquivos PDF de entrada
+*.pdf
+
+# Diretório de saída - arquivos Markdown gerados
+out/*.md
+out/**/*.md
+
+# Manter a estrutura da pasta mas ignorar conteúdo
+!out/.gitkeep

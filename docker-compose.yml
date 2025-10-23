@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  pdf-converter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pdf-to-markdown:latest
+    container_name: pdf-converter
+    
+    # Mapear diretórios locais para os volumes do container
+    volumes:
+      # Mapear todo o disco C para acesso completo aos arquivos
+      - C:\:/host_c
+      # Mapear diretório atual para /app/pdfs (PDFs de entrada)
+      - ${PWD}:/app/pdfs
+      # Mapear pasta /out para saída dos arquivos Markdown
+      - ${PWD}/out:/app/out
+    
+    # Modo interativo para permitir entrada do usuário
+    stdin_open: true
+    tty: true
+    
+    # Configurações de ambiente
+    environment:
+      - PYTHONUNBUFFERED=1
+    
+    # Comando padrão (pode ser sobrescrito)
+    # Exemplos:
+    # docker-compose run pdf-converter arquivo.pdf
+    # docker-compose run pdf-converter /app/pdfs/documento.pdf
+    command: []
+
+  # Serviço alternativo para conversão específica
+  pdf-converter-batch:
+    extends: pdf-converter
+    container_name: pdf-converter-batch
+    
+    # Para uso em batch (sem interação)
+    stdin_open: false
+    tty: false
+    
+    # Configuração para processamento em lote
+    profiles:
+      - batch

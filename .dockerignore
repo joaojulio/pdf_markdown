@@ -1,0 +1,50 @@
+# Arquivos e diretórios a serem ignorados pelo Docker
+
+# Arquivos Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Arquivos de saída
+*.md
+*.pdf
+
+# Arquivos de desenvolvimento
+.git/
+.gitignore
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Documentação (será copiada separadamente se necessário)
+README.md
+
+# Arquivos de configuração local
+.env
+.env.local

@@ -1,0 +1,13 @@
+# Dependências do Projeto PDF to Markdown Converter
+# Biblioteca principal para conversão PDF -> Markdown
+docling>=2.0.0
+
+# Dependências de sistema e processamento
+Pillow>=10.0.0
+PyMuPDF>=1.23.0
+
+# Runtime para RapidOCR (resolve download de modelos)
+onnxruntime>=1.16.0
+
+# Dependências opcionais para melhor performance
+numpy>=1.24.0
