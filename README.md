@@ -641,10 +641,6 @@ Ao reportar bugs, inclua:
 
 ---
 
-## 📜 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para detalhes.
-
 ## 🙏 Agradecimentos
 
 - **[Docling Team](https://github.com/DS4SD/docling)** - Pela excelente biblioteca de conversão PDF
