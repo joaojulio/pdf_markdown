@@ -1,10 +1,9 @@
 version: '3.8'
 
-# Docker Compose principal - Aponta para configuração na pasta /docker
 services:
   pdf-converter:
     build:
-      context: .
+      context: ..
       dockerfile: docker/Dockerfile
     image: pdf-to-markdown:latest
     container_name: pdf-converter
@@ -29,4 +28,18 @@ services:
     # Comando padrão (pode ser sobrescrito)
     # Exemplos:
     # docker-compose run pdf-converter arquivo.pdf
-    # docker-compose run pdf-converter  # modo interativo
+    # docker-compose run pdf-converter /app/pdfs/documento.pdf
+    command: []
+
+  # Serviço alternativo para conversão específica
+  pdf-converter-batch:
+    extends: pdf-converter
+    container_name: pdf-converter-batch
+    
+    # Para uso em batch (sem interação)
+    stdin_open: false
+    tty: false
+    
+    # Configuração para processamento em lote
+    profiles:
+      - batch

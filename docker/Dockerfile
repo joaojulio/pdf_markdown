@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copiar arquivo de dependências
-COPY requirements.txt .
+COPY ../src/requirements.txt .
 
 # Instalar dependências Python
 RUN pip install --no-cache-dir --upgrade pip && \
@@ -32,13 +32,13 @@ RUN pip install --no-cache-dir --upgrade pip && \
 RUN mkdir -p /app/pdfs /app/out
 
 # Criar script de pré-carregamento
-COPY preload_models.py .
+COPY ../src/preload_models.py .
 
 # Pré-carregar modelos do Docling e RapidOCR (resolver problema de primeira execução)
 RUN python preload_models.py || echo "Aviso: Alguns modelos podem ser baixados na primeira execução"
 
 # Copiar código da aplicação
-COPY convert_pdf_to_markdown.py .
+COPY ../src/convert_pdf_to_markdown.py .
 
 # Garantir permissões para o diretório de modelos
 RUN chmod -R 755 /usr/local/lib/python3.11/site-packages/ || true
