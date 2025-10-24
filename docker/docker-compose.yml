@@ -12,10 +12,10 @@ services:
     volumes:
       # Mapear todo o disco C para acesso completo aos arquivos
       - C:\:/host_c
-      # Mapear diretório atual para /app/pdfs (PDFs de entrada)
-      - ${PWD}:/app/pdfs
-      # Mapear pasta /out para saída dos arquivos Markdown
-      - ${PWD}/out:/app/out
+      # Mapear diretório raiz do projeto para /app/pdfs (PDFs de entrada)
+      - ${PWD}/..:/app/pdfs
+      # Mapear pasta /out da raiz para saída dos arquivos Markdown
+      - ${PWD}/../out:/app/out
     
     # Modo interativo para permitir entrada do usuário
     stdin_open: true
